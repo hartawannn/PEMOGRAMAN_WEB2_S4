@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Produk</title>
+</head>
+<style>
+    body{
+        text-align : center;
+    }
+    .center{
+        margin-left : auto;
+        margin-right : auto;    
+    }
+</style>
+<body>
+    <h1>Daftar Produk</h1>
+    <a href="index.php?action=home">branda</a>
+    <table border="1" class="center">
+        <tr>
+            <th>id</th>
+            <th>nama</th>
+            <th>harga</th>
+             <th><a href="index.php?action=create">Tambah produk </a></th>   
+        </tr>
+        <?php foreach($products as $product): ?>
+            <tr>
+                <td><?= $product['id'] ?></td>
+                <td><?= $product['name'] ?></td>
+                <td><?= $product['price'] ?></td>
+                <td>
+                    <a href="index.php?action=edit&id=<?= $product['id'] ?>">edit</a>
+                    <a href="index.php?action=delete&id=<?= $product['id'] ?>" onclick="return confirm('hapus produk ini?')">hapus</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+</body>
+</html>
